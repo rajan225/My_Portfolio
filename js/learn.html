@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .loading {
+            background: #0d0d0d;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Reboto;
+        }
+        
+        .conter {
+            text-align: center;
+            p {
+                font-size: 40px;
+                font-weight: 100;
+                color: #2cf60d;
+            }
+            .num {
+                color: #fffb00;
+                font-size: 60px;
+                margin-top: 10px;
+            }
+            hr {
+                height: 1px;
+                border: 1px solid #2cf60d;
+            }
+        }
+        
+        .conter {
+            position: relative;
+            width: 200px;
+            h1.abs {
+                position: absolute;
+                top: 0;
+                width: 100px;
+            }
+            .color {
+                width: 0px;
+                overflow: hidden;
+                color: #f60d54;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="loading">
+        <div class="conter">
+            <p>Loading.....</p>
+            <h1 class="num">0%</h1>
+            <hr/>
+        </div>
+    </div>
+    <div class="name">
+        <div class="">
+            <p>ram</p>
+            <p>shyam</p>
+        </div>
+    </div>
+    <script src="jquery.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.name div p').wrap('<!-- -->');
+            var counter = 0;
+            var c = 0;
+            let i = setInterval(function() {
+                $(".num").text(c + "%");
+                $("hr").css("width", c + "%");
+
+                counter++;
+                c++;
+                if (counter == 101) {
+                    clearInterval(i);
+                    $(".loading").remove();
+                    $('.name div p ').unwrap();
+                }
+            }, 50);
+
+        });
+    </script>
+</body>
+
+</html>
